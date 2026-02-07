@@ -1,8 +1,8 @@
-const body = document.getElementsByTagName('body')[0];
-const green = document.getElementById('green');
-const red = document.getElementById('red');
-const blue = document.getElementById('blue');
-const random = document.getElementById('random-js');
+const body = document.body;
+const greenBtn = document.getElementById('green');
+const redBtn = document.getElementById('red');
+const blueBtn = document.getElementById('blue');
+const randomBtn = document.getElementById('random-js');
 
 
 function setColor(name) {
@@ -10,15 +10,15 @@ function setColor(name) {
 }
 
 function randomColor() {
-  const red = Math.round(Math.random() * 255);
-  const green = Math.round(Math.random() * 255);
-  const blue = Math.round(Math.random() * 255);
-  const color = `rgb(${red},${green},${blue})`;
+  const r = Math.round(Math.random() * 256);
+  const g = Math.round(Math.random() * 256);
+  const b = Math.round(Math.random() * 256);
+  const color = `rgb(${r},${g},${b})`;
   body.style.backgroundColor = color;
 }
 
 
-green.addEventListener('click', () => setColor('green'));
-red.addEventListener('click', () => setColor('red'));
-blue.addEventListener('click', () => setColor('blue'));
-random.addEventListener('click', randomColor);
+greenBtn.addEventListener('click', () => setColor('green'));
+redBtn.addEventListener('click', () => setColor('red'));
+blueBtn.addEventListener('click', () => setColor('blue'));
+randomBtn.addEventListener('click', randomColor);
