@@ -2,7 +2,7 @@ let items = [];
 
 const itemsDiv = document.getElementById('items');
 const input = document.getElementById('itemInput');
-
+const storageKey = 'items'
 
 
 function renderItems () {
@@ -31,11 +31,18 @@ function renderItems () {
 
 
 
-function loadItems () {}
+function loadItems () {
+  const oldItems = localStorage.getItem(storageKey)
+  if (oldItems) items = JSON.parse(oldItems);
+  renderItems();
+}
 
 
 
-function saveItems () {}
+function saveItems () {
+  const stringItems = JSON.stringify(items);
+  localStorage.setItem(storageKey, stringItems)
+}
 
 
 function addItem () {
@@ -47,10 +54,14 @@ function addItem () {
   items.push(value);
   renderItems();
   input.value = '';
+  saveItems()
 }
 
 
 function removeItem () {
   items.splice(indexedDB, 1);
   renderItems()
+  saveItems()
 }
+
+document.addEventListener('DOMContentLoaded', loadItems)
